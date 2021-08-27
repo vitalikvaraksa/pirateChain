@@ -1,0 +1,23 @@
+TESTS += pirate-test
+bin_PROGRAMS += pirate-test
+
+# tool for generating our public parameters
+pirate_test_SOURCES = \
+	test-komodo/main.cpp \
+	test-komodo/testutils.cpp \
+	test-komodo/test_cryptoconditions.cpp \
+	test-komodo/test_coinimport.cpp \
+	test-komodo/test_eval_bet.cpp \
+	test-komodo/test_eval_notarisation.cpp \
+	test-komodo/test_parse_notarisation.cpp \
+	test-komodo/test_buffered_file.cpp \
+	test-komodo/test_sha256_crypto.cpp \
+	test-komodo/test_script_standard_tests.cpp \
+	test-komodo/test_addrman.cpp \
+	test-komodo/test_netbase_tests.cpp
+
+pirate_test_CPPFLAGS = $(pirated_CPPFLAGS)
+
+pirate_test_LDADD = -lgtest $(pirated_LDADD)
+
+pirate_test_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
